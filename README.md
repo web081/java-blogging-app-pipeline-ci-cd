@@ -11,10 +11,10 @@ This repository contains the CI/CD pipeline configuration for deploying a Java b
   - [SonarQube Setup](#sonarqube-setup)
   - [Nexus Setup](#nexus-setup)
   - [Terraform Setup](#terraform-setup)
+  - [Monitoring Setup](#monitoring-setup)
 - [Running the Pipeline](#running-the-pipeline)
 - [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Prerequisites
 
@@ -25,7 +25,8 @@ This repository contains the CI/CD pipeline configuration for deploying a Java b
 - Nexus Repository Manager
 - Terraform
 - AWS Account
-
+- Prometheus
+- Grafana
 ## Pipeline Overview
 
 The deployment pipeline includes the following stages:
@@ -64,6 +65,18 @@ The deployment pipeline includes the following stages:
 2. Configure AWS credentials for Terraform.
 3. Update the Terraform scripts in the `terraform/` directory with your AWS configuration.
 
+### Monitoring Setup
+
+1. **Prometheus Setup**:
+   - Deploy Prometheus to your Kubernetes cluster. You can use the [Prometheus Helm Chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus).
+   - Configure Prometheus to scrape metrics from your Java application.
+
+2. **Grafana Setup**:
+   - Deploy Grafana to your Kubernetes cluster. You can use the [Grafana Helm Chart](https://github.com/grafana/helm-charts/tree/main/charts/grafana).
+   - Connect Grafana to your Prometheus instance.
+   - Create dashboards in Grafana to visualize metrics from your application.
+
+
 ## Running the Pipeline
 
 1. Push your code changes to the Git repository.
@@ -74,7 +87,7 @@ The deployment pipeline includes the following stages:
    - Build a Docker image
    - Push the Docker image to Nexus
    - Deploy the application to AWS Kubernetes using Terraform
-
+   - Set up monitoring with Prometheus and Grafana
 ## Project Structure
 
 
