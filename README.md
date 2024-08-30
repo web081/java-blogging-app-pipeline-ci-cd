@@ -28,6 +28,9 @@ This repository contains the CI/CD pipeline configuration for deploying a Java b
 - Prometheus
 - Grafana
 ## Pipeline Overview
+[]()
+
+![building stage](https://github.com/web081/java-blogging-app-pipeline-ci-cd/blob/main/EKS_Terraform/b.app.png)
 
 The deployment pipeline includes the following stages:
 
